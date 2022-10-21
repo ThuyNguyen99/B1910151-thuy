@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../models/product.dart';
+import '../../ui/products/products_manager.dart';
+import 'package:provider/provider.dart';
 
 class UseProductListTile extends StatelessWidget {
   final Product product;
@@ -30,9 +32,19 @@ class UseProductListTile extends StatelessWidget {
     Widget buildDeleteButton(BuildContext context) {
       return IconButton(
         icon: const Icon(Icons.delete),
-        onPressed: () async {
-          print('Delete a product');
-        },
+        onPressed: () {
+          context.read<ProductsManager>().deleteProduct(product.id!);
+          ScaffoldMessenger.of(context)
+            ..hideCurrentSnackBar()
+            ..showSnackBar(
+              const SnackBar(
+                content: Text(
+                  'Product deleted',
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            );
+          },
         color: Theme.of(context).errorColor,
       );
     }
