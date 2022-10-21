@@ -4,15 +4,15 @@ import 'product_grid_tile.dart';
 import 'products_manager.dart';
 
 class ProductsGrid extends StatelessWidget {
-  final bool showFavorite;
+  final bool showFavorites;
 
-  const ProductsGrid(this.showFavorite, {super.key});
+  const ProductsGrid(this.showFavorites, {super.key});
 
   @override 
   Widget build(BuildContext context) {
     final productsManager = ProductsManager();
     final products = 
-        showFavorite ? productsManager.favoriteItems : productsManager.items;
+        showFavorites ? productsManager.favoriteItems : productsManager.items;
     return GridView.builder(
       padding: const EdgeInsets.all(10.0),
       itemCount: products.length,
