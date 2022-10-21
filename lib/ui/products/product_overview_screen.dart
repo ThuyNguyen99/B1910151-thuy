@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myshop/ui/cart/cart_screen.dart';
+import 'package:provider/provider.dart';
 import 'products_grid.dart';
 import '../shared/app_drawer.dart';
 import '../cart/cart_manager.dart';
@@ -32,25 +33,20 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
     );
   }
 
-  Widget buildShoppingCartIcon(){
-    return TopRightBadge(
-      data: CartManager().productCount,
-      child: IconButton(
-        icon: const Icon(
-          Icons.shopping_cart,
-        ),
-        onPressed: (){
-          Navigator.of(context).pushNamed(CartScreen.routeName);
-        },
-      ),
-    );
-    return IconButton(
-      icon: const Icon(
-        Icons.shopping_cart,
-
-      ),
-      onPressed: (){
-        Navigator.of(context).pushNamed(CartScreen.routeName);
+  Widget buildShoppingCartIcon() {
+    return Consumer<CartManager>(
+      builder: (ctx, cartManager, child) {
+        return TopRightBadge(
+          data: cartManager.productCount,
+          child: IconButton(
+            icon: const Icon(
+              Icons.shopping_cart,
+            ),
+            onPressed: () {
+              Navigator.of(ctx).pushNamed(CartScreen.routeName);
+            },
+          ),
+        );
       },
     );
   }
