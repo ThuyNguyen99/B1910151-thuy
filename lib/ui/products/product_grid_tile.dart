@@ -18,7 +18,7 @@ class ProductGridTile extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(10),
       child: GridTile(
-        footer: builGridFooterBar(context),
+        footer: buildGridFooterBar(context),
         child: GestureDetector(
           onTap:  () {
             Navigator.of(context).pushNamed(
@@ -40,7 +40,7 @@ class ProductGridTile extends StatelessWidget {
     );
   }
 
-  Widget builGridFooterBar(BuildContext context) {
+  Widget buildGridFooterBar(BuildContext context) {
     return GridTileBar(
       backgroundColor: Colors.black87,
       leading: ValueListenableBuilder<bool>(
@@ -48,7 +48,7 @@ class ProductGridTile extends StatelessWidget {
         builder: (ctx, isFavorite, child) {
           return IconButton(
             icon: Icon(
-              product.isFavorite ? Icons.favorite : Icons.favorite_border,
+              isFavorite ? Icons.favorite : Icons.favorite_border,
             ),
             color: Theme.of(context).colorScheme.secondary,
             onPressed: () {
