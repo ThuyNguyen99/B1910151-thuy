@@ -1,16 +1,36 @@
-
 import 'package:flutter/material.dart';
-
+import 'package:provider/provider.dart';
 import '../../models/product.dart';
+import '../shared/dialog_utils.dart';
+import './products_manager.dart';
 
 class ProductDetailScreen extends StatelessWidget {
   static const routeName = '/product-detail';
-  const ProductDetailScreen(
-    this.product, {
-      super.key,
-    });
 
-    final Product product;
+  ProductDetailScreen(
+      Product? product, {
+        super.key,
+      }) {
+      if (product == null) {
+        this.product = Product(
+          id: null,
+          title: '',
+          price: 0,
+          description: '',
+          imageUrl: '',
+        );
+      } else {
+          this.product = product;
+      }
+    }
+
+    late final Product product;
+  // const ProductDetailScreen(
+  //   this.product, {
+  //     super.key,
+  //   });
+
+  //   final Product product;
 
     @override 
     Widget build(BuildContext context) {
@@ -54,4 +74,6 @@ class ProductDetailScreen extends StatelessWidget {
         ),
       );
     }
+
+  findById(String productId) {}
 }

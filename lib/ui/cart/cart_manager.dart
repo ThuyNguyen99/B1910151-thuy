@@ -3,13 +3,14 @@ import 'package:flutter/foundation.dart';
 import '../../models/cart_item.dart';
 
 class CartManager with ChangeNotifier {
+  //Comment danh sách cart
   Map<String, CartItem> _items = {
-    'p1': CartItem(
-      id: 'c1',
-      title: 'Red Shirt',
-      price: 29.99,
-      quantity: 2,
-    ),
+    // 'p1': CartItem(
+    //   id: 'c1',
+    //   title: 'Red Shirt',
+    //   price: 29.99,
+    //   quantity: 2,
+    // ),
   };
 
   int get productCount{
