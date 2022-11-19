@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
       child: Consumer<AuthManager>(
         builder: (context, authManager, child) {
           return MaterialApp(
-            title: 'My Shop',
+            title: 'Comic',
             theme: ThemeData(
               // This is the theme of your application.
               //
